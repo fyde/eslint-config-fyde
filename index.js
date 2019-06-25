@@ -26,6 +26,7 @@ module.exports = {
     // Prettier must be last so that it can override other configs.
     'prettier',
     'prettier/flowtype',
+    'prettier/react'
   ],
 
   plugins: ['flowtype', 'jest', 'prettier', 'react'],
