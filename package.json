@@ -2,7 +2,10 @@
   "name": "eslint-config-fyde",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@kidzen.githost.io:open-source/eslint-config-fyde.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fydeinc/eslint-config-fyde.git"
+  },
   "license": "MIT",
   "dependencies": {
     "eslint": "5.16.0",
