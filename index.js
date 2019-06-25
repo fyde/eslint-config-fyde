@@ -22,12 +22,13 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:flowtype/recommended',
+    'plugin:jest/recommended',
     // Prettier must be last so that it can override other configs.
     'prettier',
     'prettier/flowtype',
   ],
 
-  plugins: ['babel', 'flowtype', 'prettier', 'react'],
+  plugins: ['babel', 'flowtype', 'jest', 'prettier', 'react'],
 
   // Values of true mean the global may be modified. Values of false represent
   // constants.
