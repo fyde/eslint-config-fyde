@@ -28,7 +28,7 @@ module.exports = {
     'prettier/flowtype',
   ],
 
-  plugins: ['babel', 'flowtype', 'jest', 'prettier', 'react'],
+  plugins: ['flowtype', 'jest', 'prettier', 'react'],
 
   // Values of true mean the global may be modified. Values of false represent
   // constants.
