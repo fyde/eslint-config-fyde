@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2018 Fyde, Inc.
+ * Copyright (c) Fyde, Inc.
  *
  * This source code is licensed under the MIT license found in the LICENSE file
  * in the root directory of this source tree.
  */
 
-const prettierConfig = require('./prettierrc');
+const prettierConfig = require('./.prettierrc');
 
 // see http://eslint.org/docs/user-guide/configuring.html#configuring-rules
 const OFF = 0;
@@ -14,9 +14,9 @@ const ERROR = 2;
 
 module.exports = {
   parser: 'babel-eslint',
+
   env: {
-    jest: true,
-    jasmine: true,
+    'jest/globals': true,
   },
 
   extends: [
@@ -26,7 +26,7 @@ module.exports = {
     // Prettier must be last so that it can override other configs.
     'prettier',
     'prettier/flowtype',
-    'prettier/react'
+    'prettier/react',
   ],
 
   plugins: ['flowtype', 'jest', 'prettier', 'react'],
@@ -47,11 +47,41 @@ module.exports = {
     // We use this for private/protected identifiers
     'no-underscore-dangle': OFF,
 
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
+    'import/order': [
+      ERROR,
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+      },
+    ],
+
     /**
      * React
      */
     // Disallow `.jsx` because React Native only supports `.js` as extension
     'react/jsx-filename-extension': OFF,
+
+    // Enforce props alphabetical sorting
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
+    'react/jsx-sort-props': [
+      ERROR,
+      {
+        ignoreCase: true,
+        callbacksLast: false,
+        shorthandFirst: false,
+        shorthandLast: false,
+        noSortAlphabetically: false,
+        reservedFirst: true,
+      },
+    ],
 
     // Ignore `defaultProps` for required prop types
     'react/default-props-match-prop-types': [
@@ -70,13 +100,40 @@ module.exports = {
         order: [
           'type-annotations',
           'static-methods',
+          'instance-variables',
           'lifecycle',
           '/^on.+$/',
+          'getters',
+          'setters',
           '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+          'instance-methods',
           'everything-else',
-          '/^render.+$/',
-          'render',
+          'rendering',
         ],
+        groups: {
+          lifecycle: [
+            'displayName',
+            'propTypes',
+            'contextTypes',
+            'childContextTypes',
+            'mixins',
+            'statics',
+            'defaultProps',
+            'constructor',
+            'getDefaultProps',
+            'getInitialState',
+            'state',
+            'getChildContext',
+            'componentWillMount',
+            'componentDidMount',
+            'componentWillReceiveProps',
+            'shouldComponentUpdate',
+            'componentWillUpdate',
+            'componentDidUpdate',
+            'componentWillUnmount',
+          ],
+          rendering: ['/^render.+$/', 'render'],
+        },
       },
     ],
 
