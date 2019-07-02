@@ -29,7 +29,7 @@ module.exports = {
     'prettier/react',
   ],
 
-  plugins: ['flowtype', 'jest', 'prettier', 'react'],
+  plugins: ['eslint-comments', 'flowtype', 'jest', 'prettier', 'react'],
 
   // Values of true mean the global may be modified. Values of false represent
   // constants.
@@ -42,8 +42,28 @@ module.exports = {
   },
 
   rules: {
+    'capitalized-comments': [
+      ERROR,
+      'always',
+      {
+        ignoreConsecutiveComments: true,
+        ignoreInlineComments: true,
+      },
+    ],
+
     // Always use brackets, even when optional.
     curly: [ERROR, 'all'],
+
+    'eslint-comments/disable-enable-pair': ERROR,
+
+    'eslint-comments/no-aggregating-enable': ERROR,
+
+    'eslint-comments/no-duplicate-disable': ERROR,
+
+    'eslint-comments/no-unlimited-disable': ERROR,
+
+    'eslint-comments/no-unused-enable': ERROR,
+
     // We use this for private/protected identifiers
     'no-underscore-dangle': OFF,
 
@@ -138,6 +158,8 @@ module.exports = {
     ],
 
     'prettier/prettier': [ERROR, prettierConfig],
+
+    'spaced-comment': [ERROR, 'always'],
   },
 
   settings: {
