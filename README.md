@@ -8,7 +8,7 @@ containing any JavaScript code.
 ### Installation
 
 ```
-yarn add -D git+ssh://git@github.com:fydeinc/eslint-config-fyde.git
+yarn add -D git+ssh://git@github.com:fyde/eslint-config-fyde.git
 ```
 
 Note that all the required dependencies are added by this package.
