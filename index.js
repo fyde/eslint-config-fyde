@@ -29,7 +29,14 @@ module.exports = {
     'prettier/react',
   ],
 
-  plugins: ['eslint-comments', 'flowtype', 'jest', 'prettier', 'react'],
+  plugins: [
+    'eslint-comments',
+    'flowtype',
+    'jest',
+    'prettier',
+    'react',
+    'react-hooks',
+  ],
 
   // Values of true mean the global may be modified. Values of false represent
   // constants.
@@ -82,6 +89,11 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+
+    /**
+     * Prettier
+     */
+    'prettier/prettier': [ERROR, prettierConfig],
 
     /**
      * React
@@ -157,7 +169,11 @@ module.exports = {
       },
     ],
 
-    'prettier/prettier': [ERROR, prettierConfig],
+    /**
+     * React Hooks
+     */
+    'react-hooks/exhaustive-deps': ERROR,
+    'react-hooks/rules-of-hooks': ERROR,
 
     'spaced-comment': [ERROR, 'always'],
   },
